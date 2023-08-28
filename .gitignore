@@ -1,1 +1,13 @@
-catboost_info/*
+# Ignore all files and subdirectories within the 'catboost_info' directory
+catboost_info/
+
+# Ignore the '__pycache__' directory
+REP/server/__pycache__/
+
+# Ignore specific files or patterns within the 'server' directory
+REP/server/real_estate_best_model.pickle
+
+
+# Ignore any IDE-specific files or directories
+.vscode/
+.idea/
