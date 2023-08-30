@@ -43,7 +43,7 @@ def load_saved_artifacts():
     # Read the JSON file
     with open("./columns.json", 'r') as file:
         __data_columns = json.load(file)['data_columns']
-        __location = __data_columns[3:]
+        __location = [column.title() for column in __data_columns[3:]]
 
     # Load the pickle file
     with open("./real_estate_best_model.pickle", 'rb') as file:
