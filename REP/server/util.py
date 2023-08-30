@@ -3,8 +3,16 @@ import json
 import pickle
 import numpy as np
 import warnings
+import os
 
 warnings.filterwarnings("ignore", category=UserWarning)
+
+# Get the absolute path of the server directory
+artifacts_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the absolute path to files
+location_file_path = os.path.join(artifacts_directory, "artifacts", "columns.json")
+model_file_path = os.path.join(artifacts_directory, "artifacts", "real_estate_model.pickle")
 
 # Variables to hold loaded data
 __location = None
@@ -41,12 +49,12 @@ def load_saved_artifacts():
     global __model
 
     # Read the JSON file
-    with open("./columns.json", 'r') as file:
+    with open(location_file_path, 'r') as file:
         __data_columns = json.load(file)['data_columns']
         __location = [column.title() for column in __data_columns[3:]]
 
     # Load the pickle file
-    with open("./real_estate_best_model.pickle", 'rb') as file:
+    with open(model_file_path, 'rb') as file:
         __model = pickle.load(file)
     
     print("Successfull loaded the artifacts...")
