@@ -57,4 +57,9 @@ function onPageLoad() {
     });
 }
 
+function clearSqft() {
+    document.getElementById("uiSqft").value = "";
+}
+
 window.onload = onPageLoad;
+window.addEventListener("beforeunload", clearSqft);
