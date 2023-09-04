@@ -1,0 +1,81 @@
+1. Upload the REP folder to cloud ubuntu server
+-----------------------------------------------------------
+# Install WinSCP to local directory
+WinSCP allows to securely transfer files between a local and a remote computers.
+
+2. Install NGINX on ubuntu server
+-----------------------------------------------------------
+# Install all packages locally in the EC2
+sudo apt-get update
+
+# Install the NGINX webserver
+sudo apt-get install nginx
+
+# Status of the NGINX webserver
+sudo service nginx status
+
+
+3. Replace the default NGINX home page files
+-----------------------------------------------------------
+# Access the nginx configuration files
+cd /etc/nginx
+
+# Access the nginx sites-enabled directory
+less sites-enabled/default
+
+# Disable the default configuration
+sudo unlink default
+
+
+4. Create Real Estate configuration file on sites-availabed
+-----------------------------------------------------------
+# Create the configuration file
+sudo vim real_estate.conf
+
+# Real Estate configuration file
+server {
+    listen 80;
+    server_name ec2-3-90-115-167.compute-1.amazonaws.com;
+    root /home/ubuntu/REP/client;
+    index app.html;
+
+    location /api/ {
+        rewrite ^/api(.*) $1 break;
+        proxy_pass http://127.0.0.1:5000;
+    }
+}
+
+# Create sim link to sites-enabled
+ln -v -s /etc/nginx/sites-availabed/real_estate.conf inside
+/etc/nginx/sites-enabled
+
+
+5. Restart NGINX server
+------------------------------------------------------------
+
+# Restart the server
+sudo server nginx restart
+
+
+6. Install necessary libraries
+-------------------------------------------------------------
+
+# Install pip for Python 3 
+sudo apt install python3-pip
+
+# Install Flask server
+pip3 install Flask  
+
+# Install Numpy
+pip3 install numpy
+
+# Install Sickit-Learn
+pip3 install scikit-learn
+
+
+# Run the server files on background
+-------------------------------------------------------------
+
+# Run the server files
+nohup python3 -u server.py
+
