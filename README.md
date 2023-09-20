@@ -1,6 +1,9 @@
 # Real Estate Price Prediction 🏠
 
 Welcome to the Real Estate Price Prediction project! This endeavor encompasses a comprehensive exploration, encompassing various stages and challenges inherent in the insightful analysis of real estate data.
+<br><br>
+
+![Real_1](https://github.com/KumudithaSilva/RealEstateRealm/assets/131386682/de320958-815b-4a2e-b234-30ae456eeb37)
 
 <br>
 
